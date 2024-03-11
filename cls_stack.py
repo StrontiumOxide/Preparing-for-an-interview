@@ -1,7 +1,7 @@
 class Stack():
 
     """
-    Стек — абстрактный тип данных, представляющий список элементов, 
+    Стек — абстрактный тип данных, представляющий список элементов,
     организованных по принципу LIFO (англ. last in — first out, «последним пришёл — первым вышел»).
     """
 
@@ -12,7 +12,10 @@ class Stack():
 
         """Проверка стека на пустоту. Метод возвращает True или False."""
 
-        return bool(self.__stack__)
+        if bool(self.__stack__):
+            return False
+        else:
+            return True
 
     def push(self, object: any) -> None:
 
@@ -24,13 +27,23 @@ class Stack():
 
         """Удаляет верхний элемент стека. Стек изменяется. Метод возвращает верхний элемент стека."""
 
-        return self.__stack__.pop()
+        try:
+            result = self.__stack__.pop()
+        except IndexError:
+            return "Stack is empty"
+        else:
+            return result
 
     def peek(self) -> None:
 
         """Возвращает верхний элемент стека, но не удаляет его. Стек не меняется."""
 
-        return self.__stack__[-1]
+        try:
+            result = self.__stack__[-1]
+        except IndexError:
+            return "Stack is empty"
+        else:
+            return result
 
     def size(self) -> None:
 
@@ -40,4 +53,4 @@ class Stack():
 
 
 if __name__ == "__main__":
-    print("Чтобы используйте данный код - импортируйте в свой файл данный класс")
+    print("Чтобы использовать данный код - импортируйте в свой файл данный класс")
